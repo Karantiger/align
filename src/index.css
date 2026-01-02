@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 192 91% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 16 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 192 91% 36%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(192, 91%, 36%) 0%, hsl(210, 78%, 51%) 50%, hsl(260, 60%, 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(16, 90%, 55%) 0%, hsl(340, 82%, 52%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(210, 40%, 98%) 0%, hsl(210, 50%, 95%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.4) 0%, hsla(0, 0%, 100%, 0.1) 100%);
+
+    --shadow-glow: 0 0 60px hsla(192, 91%, 36%, 0.3);
+    --shadow-card: 0 8px 32px hsla(222, 47%, 11%, 0.08);
+    --shadow-card-hover: 0 16px 48px hsla(222, 47%, 11%, 0.12);
+
+    --glass-bg: hsla(0, 0%, 100%, 0.7);
+    --glass-border: hsla(0, 0%, 100%, 0.5);
+    --glass-blur: 20px;
+
+    --blob-1: hsl(192, 91%, 76%);
+    --blob-2: hsl(260, 60%, 75%);
+    --blob-3: hsl(16, 90%, 75%);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 192 91% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 16 90% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 192 91% 50%;
+
+    --gradient-hero: linear-gradient(180deg, hsl(222, 47%, 6%) 0%, hsl(222, 47%, 9%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.08) 0%, hsla(0, 0%, 100%, 0.02) 100%);
+
+    --shadow-glow: 0 0 80px hsla(192, 91%, 50%, 0.25);
+    --shadow-card: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+    --shadow-card-hover: 0 16px 48px hsla(0, 0%, 0%, 0.4);
+
+    --glass-bg: hsla(222, 47%, 11%, 0.7);
+    --glass-border: hsla(255, 255%, 255%, 0.1);
+
+    --blob-1: hsl(192, 91%, 30%);
+    --blob-2: hsl(260, 60%, 35%);
+    --blob-3: hsl(16, 90%, 35%);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sora antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl border border-glass;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-border {
+    @apply relative;
+    background: var(--gradient-primary);
+    padding: 2px;
+    border-radius: var(--radius);
+  }
+
+  .gradient-border>* {
+    @apply bg-background rounded-[calc(var(--radius)-2px)];
+  }
+
+  .floating-blob {
+    @apply absolute rounded-full blur-3xl opacity-40 animate-float;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
