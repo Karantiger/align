@@ -22,12 +22,92 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/align/assets/index-RMf5VpIv.js"></script>
-  <link rel="stylesheet" crossorigin href="/align/assets/index-DK77EJlc.css">
+  <style>
+    /* Initial splash loader for Align */
+    #splash-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #020617, #020817 55%, #000 100%);
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+
+    #splash-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash-loader .loader-ring {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #splash-loader .loader-ring::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      border: 4px solid rgba(148, 163, 184, 0.3);
+      border-top-color: #22d3ee;
+      border-right-color: #4f46e5;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.5);
+      backdrop-filter: blur(16px);
+      background: radial-gradient(circle at 30% 0%, rgba(56, 189, 248, 0.15), transparent 60%);
+      animation: splash-spin 1s linear infinite;
+    }
+
+    #splash-loader img {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      -o-object-fit: cover;
+         object-fit: cover;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.8);
+    }
+
+    @keyframes splash-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/align/assets/index-DCNMBVQ4.js"></script>
+  <link rel="stylesheet" crossorigin href="/align/assets/index-CtZK6B3F.css">
 </head>
 
 <body>
+  <!-- Initial Align loader shown while site is loading -->
+  <div id="splash-loader">
+    <div class="loader-ring">
+      <img src="/align/icon.png" alt="Align" />
+    </div>
+  </div>
+
+  <!-- Main React root -->
   <div id="root"></div>
+
+  <!-- Orientation lock message for mobile landscape -->
+  <div id="orientation-lock-message">
+    <div class="orientation-lock-card">
+      <img src="/align/icon.png" alt="Align" class="orientation-lock-icon" />
+      <p>Please rotate your device to portrait to use Align.</p>
+    </div>
+  </div>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RM9W14J6XJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-RM9W14J6XJ'); // Yahan apna ID dalo
+  </script>
 </body>
 
 </html>
